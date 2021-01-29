@@ -1,3 +1,9 @@
+/**
+ * Performs a graphql request to the Yelp GraphQL API
+ * @param {String} query    GraphQL query to perform
+ * @param {Object} variables     Variables values
+ */
+
 export default function (query, variables) {
    const accessToken = process.env.YELP_API_KEY;
 
