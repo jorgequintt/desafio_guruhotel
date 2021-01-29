@@ -1,5 +1,11 @@
 import yelpGqlFetch from '../../../util/yelpGqlFetch';
 
+/**
+ * Business endpoint. Returns business information from the Yelp GraphQL API
+ * GET /business/:id
+ * @param {String} id   Business ID
+ */
+
 export default async function handler(req, res) {
    if (req.method === 'GET') {
       const { id } = req.query;

@@ -1,5 +1,12 @@
 import yelpGqlFetch from '../../util/yelpGqlFetch';
 
+/**
+ * Search endpoint. Makes a search query on the Yelp GraphQL API
+ * GET /search
+ * @param {String} term     User's search term
+ * @param {String} location User's location term
+ */
+
 export default async function handler(req, res) {
    if (req.method === 'GET') {
       const { term, location } = req.query;
