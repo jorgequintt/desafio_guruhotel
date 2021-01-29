@@ -1,0 +1,1 @@
+* Don't start server unless there's a valid API Key
