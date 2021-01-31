@@ -48,7 +48,7 @@ export default function (state = initialState, action) {
       }
 
       case DISPLAY_BUSINESS: {
-         const selectedBusinessId = action.payload.id;
+         const selectedBusinessId = action.payload.base.id;
          return {
             ...state,
             results: state.results.map((business) => {
