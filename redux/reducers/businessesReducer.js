@@ -1,28 +1,74 @@
-import { STORE_BUSINESSES, SELECT_BUSINESS } from '../types';
+import {
+   STORE_BUSINESSES,
+   DISPLAY_BUSINESS,
+   FETCHING_BUSINESS,
+   BUSINESS_FETCHING_OFF,
+   EXTEND_BUSINESS_INFO
+} from '../types';
 
 const initialState = {
    records: {}, // locally stored business
-   activeBusiness: null
+   activeBusiness: null,
+   fetchingExtendedInfo: false
 };
 
 export default function (state = initialState, action) {
    switch (action) {
-      case STORE_BUSINESSES: {
+      case FETCHING_BUSINESS: {
          return {
             ...state,
-            records: { ...state.records, ...action.payload }
+            activeBusiness: null,
+            fetchingExtendedInfo: true
+         };
+      }
+      case BUSINESS_FETCHING_OFF: {
+         return {
+            ...state,
+            fetchingExtendedInfo: false
          };
       }
 
-      case SELECT_BUSINESS: {
-         const selectedBusinessId = action.payload.id;
+      case STORE_BUSINESSES: {
+         // We store businesses as a key value pair for search for businesses by id easily
+         const firstTimeBusinessesObj = {};
+         action.payload.forEach((business) => {
+            firstTimeBusinessesObj[business.id] = { base: { ...business }, extended: null, seen: false };
+         });
+
          return {
             ...state,
-            records: state.records.map((business) => {
-               if (business.id === selectedBusinessId) {
-                  return { ...business, seen: true };
-               } else return business;
-            })
+            records: { ...state.records, ...firstTimeBusinessesObj }
+         };
+      }
+
+      // Store additional information fetched on business selection
+      case EXTEND_BUSINESS_INFO: {
+         const { businessId, extendedInfo } = action.payload;
+         return {
+            ...state,
+            records: {
+               ...state.records,
+               [businessId]: {
+                  base: { ...state.records[businessId].base },
+                  extended: { ...extendedInfo }
+               }
+            }
+         };
+      }
+
+      case DISPLAY_BUSINESS: {
+         const selectedBusinessId = action.payload.base.id;
+         return {
+            ...state,
+            fetchingExtendedInfo: false,
+            records: {
+               ...state.records,
+               [selectedBusinessId]: {
+                  ...state.records[selectedBusinessId],
+                  seen: true
+               }
+            },
+            activeBusiness: action.payload
          };
       }
 

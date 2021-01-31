@@ -1,12 +1,19 @@
 // mixed
-export const SELECT_BUSINESS = 'SELECT_BUSINESS';
+export const DISPLAY_BUSINESS = 'DISPLAY_BUSINESS';
 
-// businesses actions
+// businesses
 export const STORE_BUSINESSES = 'STORE_BUSINESSES';
+export const FETCHING_BUSINESS = 'FETCHING_BUSINESS';
+export const BUSINESS_FETCHING_OFF = 'BUSINESS_FETCHING_OFF';
+export const EXTEND_BUSINESS_INFO = 'EXTEND_BUSINESS_INFO';
 
-// search actions
+// search
 export const STORE_SEARCH_QUERY = 'STORE_SEARCH_QUERY';
 export const DISPLAY_RESULTS = 'DISPLAY_RESULTS';
-export const NOT_FETCHING = 'NOT_FETCHING';
+export const SEARCH_FETCHING_OFF = 'SEARCH_FETCHING_OFF';
 export const FETCHING_RESULTS = 'FETCHING_RESULTS';
 export const WIPE_SEARCH = 'WIPE_SEARCH';
+
+// ui
+export const DISPLAY_ERROR = 'DISPLAY_ERROR';
+export const HIDE_ERROR = 'HIDE_ERROR';

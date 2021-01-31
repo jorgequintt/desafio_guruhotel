@@ -1,12 +1,14 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import businessesReducer from './reducers/businessesReducer';
 import searchReducer from './reducers/searchReducer';
+import uiReducer from './reducers/uiReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
 const reducers = combineReducers({
    businesses: businessesReducer,
-   search: searchReducer
+   search: searchReducer,
+   ui: uiReducer
 });
 
 const middleware = [thunk];

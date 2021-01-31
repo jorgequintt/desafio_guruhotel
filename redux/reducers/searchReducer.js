@@ -3,8 +3,8 @@ import {
    STORE_SEARCH_QUERY,
    WIPE_SEARCH,
    FETCHING_RESULTS,
-   NOT_FETCHING,
-   SELECT_BUSINESS
+   SEARCH_FETCHING_OFF,
+   DISPLAY_BUSINESS
 } from '../types';
 
 const initialState = {
@@ -25,7 +25,7 @@ export default function (state = initialState, action) {
          };
       }
 
-      case NOT_FETCHING: {
+      case SEARCH_FETCHING_OFF: {
          return {
             ...state,
             fetching: false
@@ -47,7 +47,7 @@ export default function (state = initialState, action) {
          };
       }
 
-      case SELECT_BUSINESS: {
+      case DISPLAY_BUSINESS: {
          const selectedBusinessId = action.payload.id;
          return {
             ...state,
