@@ -6,8 +6,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
 const reducers = combineReducers({
-   businesses: businessesReducer,
    search: searchReducer,
+   businesses: businessesReducer,
    ui: uiReducer
 });
 

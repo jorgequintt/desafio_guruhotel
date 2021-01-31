@@ -5,7 +5,7 @@ const initialState = {
    displayErrorMsg: false
 };
 
-export default function (state = initialState, action) {
+export default function reducer(state = initialState, action) {
    switch (action.type) {
       case DISPLAY_ERROR:
          return {
@@ -22,6 +22,6 @@ export default function (state = initialState, action) {
       }
 
       default:
-         break;
+         return state;
    }
 }

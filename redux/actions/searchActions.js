@@ -4,8 +4,23 @@ import {
    DISPLAY_ERROR,
    SEARCH_FETCHING_OFF,
    DISPLAY_RESULTS,
-   STORE_BUSINESSES
+   STORE_BUSINESSES,
+   UPDATE_TERM,
+   UPDATE_LOCATION,
+   ADD_SEARCH_ERROR
 } from '../types';
+
+export const addError = (error) => (dispatch) => {
+   dispatch({ type: ADD_SEARCH_ERROR, payload: error });
+};
+
+export const updateTerm = (term) => (dispatch) => {
+   dispatch({ type: UPDATE_TERM, payload: term });
+};
+
+export const updateLocation = (location) => (dispatch) => {
+   dispatch({ type: UPDATE_LOCATION, payload: location });
+};
 
 export const fetchResults = () => (dispatch, getState) => {
    dispatch({ type: STORE_SEARCH_QUERY });

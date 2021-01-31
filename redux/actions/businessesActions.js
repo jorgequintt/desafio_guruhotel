@@ -3,8 +3,13 @@ import {
    DISPLAY_BUSINESS,
    FETCHING_BUSINESS,
    DISPLAY_ERROR,
-   EXTEND_BUSINESS_INFO
+   EXTEND_BUSINESS_INFO,
+   DESELECT_BUSINESS
 } from '../types';
+
+export const deselectBusiness = () => (dispatch) => {
+   dispatch({ type: DESELECT_BUSINESS });
+};
 
 export const selectBusiness = (businessId) => (dispatch, getState) => {
    dispatch({ type: FETCHING_BUSINESS });

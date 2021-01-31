@@ -3,7 +3,8 @@ import {
    DISPLAY_BUSINESS,
    FETCHING_BUSINESS,
    BUSINESS_FETCHING_OFF,
-   EXTEND_BUSINESS_INFO
+   EXTEND_BUSINESS_INFO,
+   DESELECT_BUSINESS
 } from '../types';
 
 const initialState = {
@@ -12,8 +13,8 @@ const initialState = {
    fetchingExtendedInfo: false
 };
 
-export default function (state = initialState, action) {
-   switch (action) {
+export default function reducer(state = initialState, action) {
+   switch (action.type) {
       case FETCHING_BUSINESS: {
          return {
             ...state,
@@ -72,7 +73,14 @@ export default function (state = initialState, action) {
          };
       }
 
+      case DESELECT_BUSINESS: {
+         return {
+            ...state,
+            activeBusiness: null
+         };
+      }
+
       default:
-         break;
+         return state;
    }
 }

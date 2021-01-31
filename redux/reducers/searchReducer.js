@@ -4,23 +4,52 @@ import {
    WIPE_SEARCH,
    FETCHING_RESULTS,
    SEARCH_FETCHING_OFF,
-   DISPLAY_BUSINESS
+   DISPLAY_BUSINESS,
+   UPDATE_TERM,
+   UPDATE_LOCATION,
+   ADD_SEARCH_ERROR
 } from '../types';
 
 const initialState = {
    term: '',
    location: '',
+   errors: {},
    results: null,
    searhQueries: [],
    fetching: false
 };
 
-export default function (state = initialState, action) {
+export default function reducer(state = initialState, action) {
    switch (action.type) {
+      case UPDATE_TERM: {
+         return {
+            ...state,
+            term: action.payload
+         };
+      }
+
+      case UPDATE_LOCATION: {
+         return {
+            ...state,
+            location: action.payload
+         };
+      }
+
+      case ADD_SEARCH_ERROR: {
+         return {
+            ...state,
+            errors: {
+               ...state.errors,
+               ...action.payload
+            }
+         };
+      }
+
       case FETCHING_RESULTS: {
          return {
             ...state,
             fetching: true,
+            errors: {},
             results: null
          };
       }
@@ -67,6 +96,6 @@ export default function (state = initialState, action) {
       }
 
       default:
-         break;
+         return state;
    }
 }
