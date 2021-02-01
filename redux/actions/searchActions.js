@@ -41,8 +41,7 @@ export const fetchResults = () => (dispatch, getState) => {
          else return response.json();
       })
       .then((data) => {
-         if (true || data.errors) {
-            throw Error('My error msg');
+         if (data.errors) {
             dispatch({ type: SEARCH_FETCHING_OFF });
             dispatch(showError(data.errors[0].message));
          } else if (data.data?.search?.business) {

@@ -22,11 +22,13 @@ class BusinessListItem extends Component {
          location,
          review_count: reviewCount,
          rating,
-         display_phone: phone
+         display_phone: phone,
+         seen
       } = this.props.business;
       return (
          <div>
             <ul>
+               {seen && <li>SEEN</li>}
                <li>{id}</li>
                <li>{name}</li>
                <li>{photos[0]}</li>
