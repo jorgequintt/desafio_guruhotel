@@ -1,8 +1,7 @@
 import { DISPLAY_ERROR, HIDE_ERROR } from '../types';
 
 const initialState = {
-   errorMsg: '',
-   displayErrorMsg: false
+   errorMsg: null
 };
 
 export default function reducer(state = initialState, action) {
@@ -10,14 +9,13 @@ export default function reducer(state = initialState, action) {
       case DISPLAY_ERROR:
          return {
             ...state,
-            errorMsg: action.payload,
-            displayErrorMsg: true
+            errorMsg: action.payload
          };
 
       case HIDE_ERROR: {
          return {
             ...state,
-            displayErrorMsg: false
+            errorMsg: null
          };
       }
 

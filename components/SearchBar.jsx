@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchResults, updateTerm, updateLocation, addError } from '../redux/actions/searchActions';
+import {
+   fetchResults,
+   updateTerm,
+   updateLocation,
+   addError,
+   clearSearch
+} from '../redux/actions/searchActions';
 import PropTypes from 'prop-types';
 
 export class SearchBar extends Component {
@@ -10,6 +16,7 @@ export class SearchBar extends Component {
       this.validateAndFetch = this.validateAndFetch.bind(this);
       this.handleTermInputChange = this.handleTermInputChange.bind(this);
       this.handleLocationInputChange = this.handleLocationInputChange.bind(this);
+      this.handleEnterKeyDown = this.handleEnterKeyDown.bind(this);
    }
 
    validateAndFetch() {
@@ -43,11 +50,18 @@ export class SearchBar extends Component {
    }
 
    render() {
-      const { term, location, errors, fetching } = this.props;
+      const { term, location, errors, fetching, results } = this.props;
+      const clearEnabled = results || term.trim() || location.trim();
 
       return (
          <div>
-            <input type="text" placeholder="Term" value={term} onChange={this.handleTermInputChange} />
+            <input
+               type="text"
+               placeholder="Term"
+               value={term}
+               onChange={this.handleTermInputChange}
+               onKeyDown={this.handleEnterKeyDown}
+            />
             {errors.term && <small>{errors.term}</small>}
             <input
                type="text"
@@ -58,6 +72,7 @@ export class SearchBar extends Component {
             />
             {errors.location && <small>{errors.location}</small>}
             <input type="button" value="Search" disabled={fetching} onClick={this.validateAndFetch} />
+            <input type="button" value="Clear" disabled={!clearEnabled} onClick={this.props.clearSearch} />
          </div>
       );
    }
@@ -68,16 +83,19 @@ SearchBar.propTypes = {
    location: PropTypes.string,
    errors: PropTypes.object,
    fetching: PropTypes.bool,
+   results: PropTypes.array,
    // actions
    updateTerm: PropTypes.func,
    updateLocation: PropTypes.func,
    fetchResults: PropTypes.func,
-   addError: PropTypes.func
+   addError: PropTypes.func,
+   clearSearch: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
    term: state.search.term,
    location: state.search.location,
+   results: state.search.results,
    errors: state.search.errors,
    fetching: state.search.fetching
 });
@@ -86,7 +104,8 @@ const mapActionsToProps = {
    fetchResults,
    updateTerm,
    updateLocation,
-   addError
+   addError,
+   clearSearch
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(SearchBar);

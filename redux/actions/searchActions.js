@@ -1,3 +1,5 @@
+import { showError } from './uiActions';
+
 import {
    FETCHING_RESULTS,
    STORE_SEARCH_QUERY,
@@ -7,7 +9,8 @@ import {
    STORE_BUSINESSES,
    UPDATE_TERM,
    UPDATE_LOCATION,
-   ADD_SEARCH_ERROR
+   ADD_SEARCH_ERROR,
+   WIPE_SEARCH
 } from '../types';
 
 export const addError = (error) => (dispatch) => {
@@ -22,6 +25,10 @@ export const updateLocation = (location) => (dispatch) => {
    dispatch({ type: UPDATE_LOCATION, payload: location });
 };
 
+export const clearSearch = () => (dispatch) => {
+   dispatch({ type: WIPE_SEARCH });
+};
+
 export const fetchResults = () => (dispatch, getState) => {
    dispatch({ type: STORE_SEARCH_QUERY });
    dispatch({ type: FETCHING_RESULTS });
@@ -34,9 +41,10 @@ export const fetchResults = () => (dispatch, getState) => {
          else return response.json();
       })
       .then((data) => {
-         if (data.errors) {
+         if (true || data.errors) {
+            throw Error('My error msg');
             dispatch({ type: SEARCH_FETCHING_OFF });
-            dispatch({ type: DISPLAY_ERROR, payload: data.errors[0].message });
+            dispatch(showError(data.errors[0].message));
          } else if (data.data?.search?.business) {
             const results = data.data.search.business;
             const storedBusinesses = getState().businesses.records;
@@ -57,11 +65,11 @@ export const fetchResults = () => (dispatch, getState) => {
             dispatch({ type: DISPLAY_RESULTS, payload: results });
          } else {
             dispatch({ type: SEARCH_FETCHING_OFF });
-            dispatch({ type: DISPLAY_ERROR, payload: 'An unexpected error ocurred. Please try again.' });
+            dispatch(showError('An unexpected error ocurred. Please try again.'));
          }
       })
       .catch((err) => {
          dispatch({ type: SEARCH_FETCHING_OFF });
-         dispatch({ type: DISPLAY_ERROR, payload: err });
+         dispatch(showError(err.message));
       });
 };

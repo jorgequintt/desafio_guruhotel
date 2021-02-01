@@ -10,6 +10,8 @@ export class BusinessList extends Component {
          <div>
             {fetching
                ? 'Loading...'
+               : results?.length === 0
+               ? 'No results to show.'
                : results?.length > 0 &&
                  results.map((business) => <BusinessListItem key={business.id} business={business} />)}
          </div>
