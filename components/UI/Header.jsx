@@ -1,5 +1,3 @@
-import Button from '../Common/Button';
-
 export default function Header() {
    return (
       <div className="header">

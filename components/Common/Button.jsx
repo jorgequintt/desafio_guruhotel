@@ -23,7 +23,8 @@ Button.propTypes = {
    fontAwesomeClasses: PropTypes.string,
    borderless: PropTypes.bool,
    disabled: PropTypes.bool,
-   rightIcon: PropTypes.bool
+   rightIcon: PropTypes.bool,
+   fullWidth: PropTypes.bool
 };
 
 export default Button;
