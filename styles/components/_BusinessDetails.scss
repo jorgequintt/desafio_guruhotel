@@ -1,3 +1,61 @@
 .business-details {
    flex: 1;
+   padding: 1rem;
+
+   strong,
+   .business-info-icon {
+      color: $mainColor;
+   }
+
+   .business-title {
+      color: $mainColor;
+      margin-top: 0;
+      margin-bottom: 1rem;
+   }
+
+   .business-details-image {
+      height: 300px;
+      width: 300px;
+
+      @include md {
+         height: 300px;
+         width: 300px;
+      }
+
+      @include lg {
+         height: 330px;
+         width: 330px;
+      }
+   }
+
+   .image-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
+   .details-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 1rem;
+      column-gap: 1.5rem;
+      row-gap: 1rem;
+      margin-top: 1rem;
+
+      flex-direction: column;
+
+      @include md {
+         flex-direction: row;
+
+         .details-section,
+         .image-section {
+            flex: 1;
+         }
+
+         .reviews-section,
+         .business-title {
+            flex: 0 0 100%;
+         }
+      }
+   }
 }

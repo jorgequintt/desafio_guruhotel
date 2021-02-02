@@ -5,9 +5,10 @@ export default function Header() {
       <div className="header">
          <div className="header-title">Yelp Search App</div>
          <div className="header-fill"></div>
-         <div className="header-about-btn-wrapper">
+         <div className="header-made-by">Made by Jorge Quintero</div>
+         {/* <div className="header-about-btn-wrapper">
             <Button fontAwesomeClasses={'fas fa-question'} onClick={() => alert('works')} borderless={true} />
-         </div>
+         </div> */}
       </div>
    );
 }

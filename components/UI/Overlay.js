@@ -4,7 +4,17 @@ import PropTypes from 'prop-types';
 
 export class Overlay extends Component {
    render() {
-      return <div>{this.props.errorMsg}</div>;
+      const { errorMsg } = this.props;
+
+      return (
+         <div className="overlay">
+            {errorMsg && (
+               <div className="overlay-error-msg">
+                  <i className="fas fa-exclamation" style={{ marginRight: '1rem' }}></i> {errorMsg}
+               </div>
+            )}
+         </div>
+      );
    }
 }
 

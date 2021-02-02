@@ -9,10 +9,12 @@ import {
 
 export const deselectBusiness = () => (dispatch) => {
    dispatch({ type: DESELECT_BUSINESS });
+   window.scrollTo(0, 0);
 };
 
 export const selectBusiness = (businessId) => (dispatch, getState) => {
    dispatch({ type: FETCHING_BUSINESS });
+   window.scrollTo(0, 0);
 
    const businessEntry = getState().businesses.records[businessId];
 

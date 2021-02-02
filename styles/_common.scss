@@ -1,7 +1,7 @@
 /* BUTTON COMMON COMPONENT */
 .btn {
    display: inline-block;
-   padding: 0.7rem 0.8rem;
+   padding: 0.7rem 1.8rem;
    margin: 0rem 0.6rem;
    border-radius: 0.5rem;
    min-width: 1rem;
@@ -13,6 +13,7 @@
    transition: background-color 0.3s ease-in-out;
    cursor: pointer;
    font-size: 0.9rem;
+   box-sizing: border-box;
 
    .btn-contents {
       display: flex;
@@ -38,6 +39,10 @@
 
    &:not(.disabled):hover {
       background-color: $mainColorHover;
+   }
+
+   &.full-width {
+      display: block;
    }
 }
 

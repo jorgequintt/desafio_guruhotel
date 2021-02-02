@@ -30,6 +30,7 @@ export default async function handler(req, res) {
                         city
                         state
                         address1
+                        formatted_address
                     }
                     review_count
                     rating

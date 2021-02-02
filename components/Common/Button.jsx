@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 
-function Button({ text, onClick, fontAwesomeClasses, borderless, disabled, rightIcon }) {
+function Button({ text, onClick, fontAwesomeClasses, borderless, disabled, rightIcon, fullWidth }) {
    const btnClasses = ['btn'];
    if (borderless) btnClasses.push('borderless');
+   if (fullWidth) btnClasses.push('full-width');
    if (disabled) btnClasses.push('disabled');
 
    return (

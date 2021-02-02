@@ -1,0 +1,31 @@
+.overlay {
+   position: fixed;
+   height: 100%;
+   width: 100%;
+   pointer-events: none;
+
+   .overlay-error-msg {
+      background: #ff4747;
+      color: white;
+      font-weight: bold;
+      display: inline;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.7rem 1.3rem;
+      border-radius: 0.2rem;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      white-space: nowrap;
+      font-size: 0.8rem;
+
+      @include md {
+         bottom: 2rem;
+         right: 2rem;
+         left: auto;
+         transform: none;
+         font-size: 1rem;
+      }
+   }
+}

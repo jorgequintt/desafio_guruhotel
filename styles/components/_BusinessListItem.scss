@@ -1,0 +1,56 @@
+.business-list-item {
+   padding: 2rem;
+   // padding-top: 0;
+
+   .business-list-item-title {
+      color: $mainColor;
+      margin-top: 0;
+      margin-bottom: 0;
+      cursor: pointer;
+
+      &.seen {
+         color: #999999;
+      }
+   }
+
+   .business-list-image {
+      height: 300px;
+      width: 300px;
+      margin-bottom: 1rem;
+      cursor: pointer;
+
+      @include md {
+         margin-bottom: 0;
+         height: 220px;
+         width: 250px;
+      }
+   }
+
+   .columns-wrapper {
+      display: flex;
+      flex-direction: column;
+      column-gap: 26px;
+
+      @include md {
+         flex-direction: row-reverse;
+      }
+
+      .column-1 {
+         display: flex;
+         justify-content: center;
+      }
+
+      .column-2 {
+         flex: 1;
+         // padding: 0 1rem 0 0;
+         display: flex;
+         flex-direction: column;
+
+         // @include md {
+         //    height: 180px;
+         //    width: 200px;
+         //    padding: 0 2rem 0 0;
+         // }
+      }
+   }
+}

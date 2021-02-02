@@ -22,11 +22,11 @@ class Image extends Component {
    }
 
    render() {
-      const { width, height, src } = this.props;
+      const { width, height, src, className, onClick } = this.props;
       const { imageLoaded, imageError } = this.state;
 
       return (
-         <div className="image-holder" style={{ width, height }}>
+         <div className={'image-holder ' + className} style={{ width, height }} onClick={onClick}>
             {imageError ? (
                <i className="far fa-eye-slash" style={{ fontSize: '2rem', color: '#999999' }}></i>
             ) : (
@@ -48,8 +48,10 @@ class Image extends Component {
 
 Image.propTypes = {
    src: PropTypes.string.isRequired,
-   width: PropTypes.number,
-   height: PropTypes.number
+   className: PropTypes.string,
+   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+   onClick: PropTypes.func
 };
 
 export default Image;

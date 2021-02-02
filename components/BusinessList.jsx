@@ -12,7 +12,9 @@ export class BusinessList extends Component {
             {fetching ? (
                <LoadingBox iconSize={4} />
             ) : results?.length === 0 ? (
-               <div className="no-results-msg">No results to show</div>
+               <div className="no-results-msg">
+                  No results to show <i className="far fa-frown"></i>
+               </div>
             ) : (
                results?.length > 0 &&
                results.map((business) => <BusinessListItem key={business.id} business={business} />)

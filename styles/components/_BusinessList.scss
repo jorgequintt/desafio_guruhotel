@@ -1,4 +1,11 @@
 .business-list {
    background-color: #eeeeee;
    flex: 1;
+
+   .no-results-msg {
+      text-align: center;
+      padding: 31px;
+      font-size: 1.5rem;
+      color: #777777;
+   }
 }

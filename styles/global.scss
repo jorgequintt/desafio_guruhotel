@@ -7,8 +7,10 @@
 // Components styles
 @import './common';
 @import './components/UI/Header';
+@import './components/UI/Overlay';
 @import './components/SearchForm';
 @import './components/BusinessList';
+@import './components/BusinessListItem';
 @import './components/BusinessDetails';
 
 body {
@@ -25,4 +27,25 @@ body {
    height: 100vh;
    display: flex;
    flex-direction: column;
+}
+
+/* ducktaped margin on bigger sizes */
+.header,
+.search-form,
+.business-list,
+.business-details {
+   @include lg {
+      padding-right: 170px;
+      padding-left: 170px;
+   }
+   @include xl {
+      padding-right: 230px;
+      padding-left: 230px;
+   }
+}
+
+.business-info-icon {
+   margin-right: 10px;
+   width: 1rem;
+   text-align: center;
 }

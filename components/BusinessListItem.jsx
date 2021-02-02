@@ -18,7 +18,6 @@ class BusinessListItem extends Component {
 
    render() {
       const {
-         id,
          photos,
          name,
          location,
@@ -28,23 +27,41 @@ class BusinessListItem extends Component {
          seen
       } = this.props.business;
       return (
-         <div>
-            <ul>
-               {seen && <li>SEEN</li>}
-               <Image src={photos[0]} height={100} width={100} />
-               <li>{id}</li>
-               <li>{name}</li>
-               <li>{location.city}</li>
-               <li>{reviewCount}</li>
-               <li>{rating}</li>
-               <li>{phone}</li>
-               <Button
-                  text="See business"
-                  fontAwesomeClasses="fas fa-chevron-right"
-                  onClick={this.handleClick}
-                  rightIcon={true}
-               />
-            </ul>
+         <div className="business-list-item">
+            <div className="columns-wrapper">
+               <div className="column-1">
+                  <Image src={photos[0]} className="business-list-image" onClick={this.handleClick} />
+               </div>
+               <div className="column-2">
+                  <h3 className={`business-list-item-title ${seen ? 'seen' : ''}`} onClick={this.handleClick}>
+                     {seen && <i className="fas fa-eye"></i>} {name}
+                  </h3>
+                  <div style={{ flex: 1, padding: '1rem 0' }}>
+                     <div>
+                        <i className="business-info-icon fas fa-globe"></i>
+                        {location.country}
+                     </div>
+                     <div>
+                        <i className="business-info-icon fas fa-map-marker-alt"></i>
+                        {location.formatted_address}
+                     </div>
+                     <div>
+                        <i className="business-info-icon fas fa-star"></i>
+                        {`${rating} (${reviewCount} ${reviewCount === 1 ? 'review' : 'reviews'})`}
+                     </div>
+                     <div>
+                        <i className="business-info-icon fas fa-phone"></i>
+                        {phone}
+                     </div>
+                  </div>
+                  <Button
+                     text="Check it"
+                     fontAwesomeClasses="fas fa-chevron-right"
+                     onClick={this.handleClick}
+                     rightIcon={true}
+                  />
+               </div>
+            </div>
          </div>
       );
    }
