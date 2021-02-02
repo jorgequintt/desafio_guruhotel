@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SearchBar from './SearchBar';
+import SearchForm from './SearchForm';
 import BusinessDetails from './BusinessDetails';
 import BusinessList from './BusinessList';
 
@@ -16,7 +16,7 @@ export class SearchApp extends Component {
                <BusinessDetails />
             ) : (
                <>
-                  <SearchBar />
+                  <SearchForm />
                   <BusinessList />
                </>
             )}

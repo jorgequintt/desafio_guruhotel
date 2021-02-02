@@ -2,18 +2,21 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import BusinessListItem from './BusinessListItem';
 import PropTypes from 'prop-types';
+import LoadingBox from './Common/LoadingBox';
 
 export class BusinessList extends Component {
    render() {
       const { results, fetching } = this.props;
       return (
-         <div>
-            {fetching
-               ? 'Loading...'
-               : results?.length === 0
-               ? 'No results to show.'
-               : results?.length > 0 &&
-                 results.map((business) => <BusinessListItem key={business.id} business={business} />)}
+         <div className="business-list">
+            {fetching ? (
+               <LoadingBox iconSize={4} />
+            ) : results?.length === 0 ? (
+               <div className="no-results-msg">No results to show</div>
+            ) : (
+               results?.length > 0 &&
+               results.map((business) => <BusinessListItem key={business.id} business={business} />)
+            )}
          </div>
       );
    }

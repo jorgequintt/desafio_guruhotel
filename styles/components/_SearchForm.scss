@@ -1,0 +1,45 @@
+.search-form {
+   display: flex;
+   flex-direction: column;
+   padding: 1rem;
+   @include md {
+      flex-direction: row;
+   }
+
+   .inputs-wrapper {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+
+      @include md {
+         flex-direction: row;
+      }
+
+      .input {
+         margin-bottom: 1rem;
+
+         @include md {
+            width: 47%;
+            margin: 0.5rem;
+         }
+      }
+   }
+
+   .buttons-wrapper {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 0rem 0rem;
+
+      .btn,
+      .btn-icon {
+         font-size: 1.4rem;
+      }
+      @include md {
+         .btn,
+         .btn-icon {
+            font-size: 1rem;
+         }
+      }
+   }
+}

@@ -4,10 +4,12 @@ import {
    fetchResults,
    updateTerm,
    updateLocation,
-   addError,
+   addErrors,
    clearSearch
 } from '../redux/actions/searchActions';
 import PropTypes from 'prop-types';
+import Input from './Common/Input';
+import Button from './Common/Button';
 
 export class SearchBar extends Component {
    constructor(props) {
@@ -20,17 +22,13 @@ export class SearchBar extends Component {
    }
 
    validateAndFetch() {
-      let hasError = false;
-      if (this.props.term.trim() === '') {
-         this.props.addError({ term: 'You must type a search term' });
-         hasError = true;
-      }
-      if (this.props.location.trim() === '') {
-         this.props.addError({ location: 'You must type a location for this search' });
-         hasError = true;
-      }
+      const errors = {};
+      if (this.props.term.trim() === '') errors.term = 'You must type a search term';
+      if (this.props.location.trim() === '') errors.location = 'You must type a location for this search';
 
-      if (hasError) return;
+      if (Object.entries(errors).length > 0)
+         // early exit if there's an error
+         return this.props.addErrors(errors);
 
       this.props.fetchResults();
    }
@@ -51,28 +49,40 @@ export class SearchBar extends Component {
 
    render() {
       const { term, location, errors, fetching, results } = this.props;
-      const clearEnabled = results || term.trim() || location.trim();
+      const clearEnabled = !fetching && (results || term.trim() || location.trim());
 
       return (
-         <div>
-            <input
-               type="text"
-               placeholder="Term"
-               value={term}
-               onChange={this.handleTermInputChange}
-               onKeyDown={this.handleEnterKeyDown}
-            />
-            {errors.term && <small>{errors.term}</small>}
-            <input
-               type="text"
-               placeholder="Location"
-               value={location}
-               onChange={this.handleLocationInputChange}
-               onKeyDown={this.handleEnterKeyDown}
-            />
-            {errors.location && <small>{errors.location}</small>}
-            <input type="button" value="Search" disabled={fetching} onClick={this.validateAndFetch} />
-            <input type="button" value="Clear" disabled={!clearEnabled} onClick={this.props.clearSearch} />
+         <div className="search-form">
+            <div className="inputs-wrapper">
+               <Input
+                  placeholder="Search term"
+                  value={term}
+                  error={errors.term}
+                  onChange={this.handleTermInputChange}
+                  onEnterKey={this.validateAndFetch}
+               />
+               <Input
+                  placeholder="Location"
+                  value={location}
+                  error={errors.location}
+                  onChange={this.handleLocationInputChange}
+                  onEnterKey={this.validateAndFetch}
+               />
+            </div>
+            <div className="buttons-wrapper">
+               <Button
+                  text="Search"
+                  fontAwesomeClasses="fas fa-search"
+                  disabled={fetching}
+                  onClick={this.validateAndFetch}
+               />
+               <Button
+                  text="Clear"
+                  fontAwesomeClasses="fas fa-times"
+                  disabled={!clearEnabled}
+                  onClick={this.props.clearSearch}
+               />
+            </div>
          </div>
       );
    }
@@ -88,7 +98,7 @@ SearchBar.propTypes = {
    updateTerm: PropTypes.func,
    updateLocation: PropTypes.func,
    fetchResults: PropTypes.func,
-   addError: PropTypes.func,
+   addErrors: PropTypes.func,
    clearSearch: PropTypes.func
 };
 
@@ -104,7 +114,7 @@ const mapActionsToProps = {
    fetchResults,
    updateTerm,
    updateLocation,
-   addError,
+   addErrors,
    clearSearch
 };
 

@@ -1,0 +1,20 @@
+.header {
+   display: flex;
+   height: 70px;
+   background-color: $mainColor;
+   justify-content: center;
+   align-items: center;
+   padding: 20px;
+   box-sizing: border-box;
+
+   .header-title {
+      font-family: 'Montserrat';
+      font-weight: bold;
+      color: white;
+      font-size: 1.4rem;
+   }
+
+   .header-fill {
+      flex: 1;
+   }
+}

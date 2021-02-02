@@ -1,0 +1,61 @@
+/* Montserrat */
+
+@font-face {
+   font-family: 'Montserrat';
+   src: url('fonts/Montserrat-Regular.ttf') format('truetype');
+   font-weight: normal;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'Montserrat';
+   src: url('fonts/Montserrat-Italic.ttf') format('truetype');
+   font-weight: normal;
+   font-style: italic;
+}
+
+@font-face {
+   font-family: 'Montserrat';
+   src: url('fonts/Montserrat-Bold.ttf') format('truetype');
+   font-weight: bold;
+   font-style: normal;
+}
+
+/* OPEN SANS */
+
+@font-face {
+   font-family: 'OpenSans';
+   src: url('fonts/OpenSans-Regular.ttf') format('truetype');
+   font-weight: normal;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'OpenSans';
+   src: url('fonts/OpenSans-Italic.ttf') format('truetype');
+   font-weight: normal;
+   font-style: italic;
+}
+
+@font-face {
+   font-family: 'OpenSans';
+   src: url('fonts/OpenSans-Bold.ttf') format('truetype');
+   font-weight: bold;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'OpenSans';
+   src: url('fonts/OpenSans-BoldItalic.ttf') format('truetype');
+   font-weight: bold;
+   font-style: italic;
+}
+
+/* FONT AWESOME */
+@font-face {
+   font-family: 'Font Awesome 5 Free';
+   font-style: normal;
+   font-weight: 400;
+   font-display: block;
+   src: url('fonts/font-awesome-regular.otf') format('opentype');
+}

@@ -3,18 +3,17 @@ import { showError } from './uiActions';
 import {
    FETCHING_RESULTS,
    STORE_SEARCH_QUERY,
-   DISPLAY_ERROR,
    SEARCH_FETCHING_OFF,
    DISPLAY_RESULTS,
    STORE_BUSINESSES,
    UPDATE_TERM,
    UPDATE_LOCATION,
-   ADD_SEARCH_ERROR,
+   ADD_SEARCH_ERRORS,
    WIPE_SEARCH
 } from '../types';
 
-export const addError = (error) => (dispatch) => {
-   dispatch({ type: ADD_SEARCH_ERROR, payload: error });
+export const addErrors = (errors) => (dispatch) => {
+   dispatch({ type: ADD_SEARCH_ERRORS, payload: errors });
 };
 
 export const updateTerm = (term) => (dispatch) => {

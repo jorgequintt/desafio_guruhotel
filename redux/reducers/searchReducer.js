@@ -7,7 +7,7 @@ import {
    DISPLAY_BUSINESS,
    UPDATE_TERM,
    UPDATE_LOCATION,
-   ADD_SEARCH_ERROR
+   ADD_SEARCH_ERRORS
 } from '../types';
 
 const initialState = {
@@ -35,11 +35,10 @@ export default function reducer(state = initialState, action) {
          };
       }
 
-      case ADD_SEARCH_ERROR: {
+      case ADD_SEARCH_ERRORS: {
          return {
             ...state,
             errors: {
-               ...state.errors,
                ...action.payload
             }
          };

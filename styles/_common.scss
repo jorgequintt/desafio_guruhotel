@@ -1,0 +1,96 @@
+/* BUTTON COMMON COMPONENT */
+.btn {
+   display: inline-block;
+   padding: 0.7rem 0.8rem;
+   margin: 0rem 0.6rem;
+   border-radius: 0.5rem;
+   min-width: 1rem;
+   min-height: 1rem;
+   background-color: $mainColor;
+   color: $mainColorFg;
+   border: 1px solid $mainColorBorder;
+   font-family: 'Montserrat';
+   transition: background-color 0.3s ease-in-out;
+   cursor: pointer;
+   font-size: 0.9rem;
+
+   .btn-contents {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
+   &.disabled {
+      cursor: default;
+      background-color: #888888;
+   }
+
+   .btn-icon {
+      font-size: 1rem;
+   }
+
+   .btn-text {
+   }
+
+   &.borderless {
+      border: 0px;
+   }
+
+   &:not(.disabled):hover {
+      background-color: $mainColorHover;
+   }
+}
+
+/* INPUT COMMON COMPONENT */
+.input {
+   // padding: 0.7rem 1.2rem;
+   .input-field {
+      box-sizing: border-box;
+      transition: border 0.25s ease-in-out;
+      font-size: 1.3rem;
+      width: 100%;
+      padding: 0.5rem 0.8rem;
+      border-radius: 0.3rem;
+      border: 1px solid #aaaaaa;
+
+      &.input-with-error {
+         border: 1px solid red;
+      }
+   }
+
+   .error-msg {
+      font-size: 0.8rem;
+      font-family: 'OpenSans';
+      color: red;
+   }
+}
+
+/* LOADING ICON */
+.loading-wrapper {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex: '1';
+}
+
+.loading-icon {
+   color: $mainColor;
+}
+
+/* IMAGE */
+.image-holder {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   overflow: hidden;
+   border: 1px solid #888888;
+   border-radius: 0.4rem;
+}
+
+.image {
+   object-fit: cover;
+   height: 100%;
+   width: 100%;
+   opacity: 0;
+   transition: opacity 0.25s ease-in-out;
+}

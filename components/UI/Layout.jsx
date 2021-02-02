@@ -4,9 +4,8 @@ import Overlay from './Overlay';
 
 function Layout({ children }) {
    return (
-      <div>
+      <div className="container">
          <Header />
-         <h1>Welcome</h1>
          {children}
          <Overlay />
       </div>

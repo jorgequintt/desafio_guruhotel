@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { deselectBusiness } from '../redux/actions/businessesActions';
+import LoadingBox from './Common/LoadingBox';
 
 export class BusinessDetails extends Component {
    constructor(props) {
@@ -18,9 +19,15 @@ export class BusinessDetails extends Component {
       const { activeBusiness, fetchingExtendedInfo } = this.props;
 
       return (
-         <div>
+         <div className="business-details">
             <input type="button" value="Go Back" onClick={this.handleClickDeselectBusiness} />
-            {fetchingExtendedInfo ? 'Loading...' : activeBusiness ? 'Loaded' /* Display store data */ : ''}
+            {true || fetchingExtendedInfo ? (
+               <LoadingBox iconSize={4} />
+            ) : activeBusiness ? (
+               'Loaded' /* Display store data */
+            ) : (
+               ''
+            )}
          </div>
       );
    }

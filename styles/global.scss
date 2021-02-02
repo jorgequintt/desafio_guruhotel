@@ -1,0 +1,28 @@
+@import './variables';
+
+// Fonts
+@import './fonts';
+@import './lib/fontawesome/fontawesome.min.css';
+
+// Components styles
+@import './common';
+@import './components/UI/Header';
+@import './components/SearchForm';
+@import './components/BusinessList';
+@import './components/BusinessDetails';
+
+body {
+   font-family: 'OpenSans';
+   margin: 0;
+}
+
+html,
+body {
+   height: 100%;
+}
+
+.container {
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+}

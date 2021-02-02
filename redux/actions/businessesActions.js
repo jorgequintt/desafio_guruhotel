@@ -1,8 +1,8 @@
+import { showError } from './uiActions';
 import {
    BUSINESS_FETCHING_OFF,
    DISPLAY_BUSINESS,
    FETCHING_BUSINESS,
-   DISPLAY_ERROR,
    EXTEND_BUSINESS_INFO,
    DESELECT_BUSINESS
 } from '../types';
@@ -28,7 +28,7 @@ export const selectBusiness = (businessId) => (dispatch, getState) => {
          .then((data) => {
             if (data.errors) {
                dispatch({ type: BUSINESS_FETCHING_OFF });
-               dispatch({ type: DISPLAY_ERROR, payload: data.errors[0].message });
+               dispatch(showError(data.errors[0].message));
             } else if (data.data?.business) {
                const result = data.data.business;
                const extendedBusinessEntry = { ...businessEntry, extended: result };
@@ -37,12 +37,12 @@ export const selectBusiness = (businessId) => (dispatch, getState) => {
                dispatch({ type: DISPLAY_BUSINESS, payload: extendedBusinessEntry });
             } else {
                dispatch({ type: BUSINESS_FETCHING_OFF });
-               dispatch({ type: DISPLAY_ERROR, payload: 'An unexpected error ocurred. Please try again.' });
+               dispatch(showError('An unexpected error ocurred. Please try again.'));
             }
          })
          .catch((err) => {
             dispatch({ type: BUSINESS_FETCHING_OFF });
-            dispatch({ type: DISPLAY_ERROR, payload: err });
+            dispatch(showError(err.message));
          });
    }
 };
